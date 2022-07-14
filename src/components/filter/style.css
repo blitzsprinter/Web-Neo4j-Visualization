@@ -1,0 +1,10 @@
+.container {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0rem 2rem;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: 180px;
+  overflow-y: scroll;
+}
