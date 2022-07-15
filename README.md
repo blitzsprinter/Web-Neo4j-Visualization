@@ -29,7 +29,7 @@ Create a Neo4j Sanbox [here](https://neo4j.com/sandbox/).
 ```sh
 git clone git@github.com:jackdbd/react-neovis-example.git
 cd react-neovis-example
-yarn install  # or simply, yarn
+yarn install  # or simply, yarn.
 ```
 
 ### 3 - Connect to your Neo4j Sandbox
