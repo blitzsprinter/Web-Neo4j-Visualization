@@ -28,32 +28,39 @@ export default function Filter() {
     <div className="container">
       <List>
         <h4>Objects</h4>
-        {["AWSZone", "AWSRegion", "Subnet", "AWSVpc", "SecurityGroup"].map(
-          value => {
-            const labelId = `checkbox-list-label-${value}`;
+        {[
+          "AWSZone",
+          "AWSRegion",
+          "Subnet",
+          "AWSVpc",
+          "SecurityGroup",
+          "AWSEC2",
+          "AWSTgw",
+          "AwsMaster",
+        ].map(value => {
+          const labelId = `checkbox-list-label-${value}`;
 
-            return (
-              <ListItem key={value} disablePadding>
-                <ListItemButton
-                  role={undefined}
-                  onClick={handleToggle(value)}
-                  dense
-                >
-                  <ListItemIcon>
-                    <Checkbox
-                      edge="start"
-                      checked={checked.indexOf(value) !== -1}
-                      tabIndex={-1}
-                      disableRipple
-                      inputProps={{ "aria-labelledby": labelId }}
-                    />
-                  </ListItemIcon>
-                  <ListItemText id={labelId} primary={`${value}`} />
-                </ListItemButton>
-              </ListItem>
-            );
-          }
-        )}
+          return (
+            <ListItem key={value} disablePadding>
+              <ListItemButton
+                role={undefined}
+                onClick={handleToggle(value)}
+                dense
+              >
+                <ListItemIcon>
+                  <Checkbox
+                    edge="start"
+                    checked={checked.indexOf(value) !== -1}
+                    tabIndex={-1}
+                    disableRipple
+                    inputProps={{ "aria-labelledby": labelId }}
+                  />
+                </ListItemIcon>
+                <ListItemText id={labelId} primary={`${value}`} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
         <h4>Relationships</h4>
         {[
           "geo",
@@ -61,16 +68,13 @@ export default function Filter() {
           "VpcOwner",
           "ownTgw",
           "PortRangeSG",
-          "geo",
-          "Peering",
-          "VpcOwner",
+          "InZone",
+          "InVpc",
+          "InRegion",
+          "Linked",
+          "owner",
           "ownTgw",
-          "PortRangeSG",
-          "geo",
-          "Peering",
-          "VpcOwner",
-          "ownTgw",
-          "PortRangeSG",
+          "TransitGatewayAttachment",
         ].map(value => {
           const labelId = `checkbox-list-label-${value}`;
 
