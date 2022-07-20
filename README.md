@@ -1,42 +1,39 @@
 # React Neovis Example
 
-![A PNG file that shows an example of this project](https://github.com/jackdbd/react-neovis-example/blob/master/screenshots/example.png "Example")
+![A PNG file that shows an example of this project](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/screenshots/example.png "Example")
 
 ## What is this thing?
 
-This repo is just a simple example on how to show a [neovis.js](https://github.com/neo4j-contrib/neovis.js/) graph visualization in a React application.
+This repo is just a way to visualize data in your [neo4j.com](https://neo4j.com/) database with a help of different tools including [neovis.js](https://github.com/neo4j-contrib/neovis.js/) in a React application.
 
 ## How do I use it?
 
-You don't need to install Neo4j for this project. You just need 3 things:
+You don't need to install Neo4j but its better if you do it. You just need 3 things:
 
-1. create a Neo4j Sandbox on [neo4j.com](https://neo4j.com/sandbox/),
+1. create a Neo4j database on your computer or use Neo4j Sandbox on [neo4j.com](https://neo4j.com/sandbox/),
 2. install the project dependencies,
-3. connect to your Neo4j Sandbox.
+3. connect to your Neo4j database.
 
 ### 1 - Create a Neo4j Sandbox
 
-A Neo4j Sandbox is essentially a Docker container with Neo4j installed, and a graph dataset that you can play with. There is nothing to install. It runs on the cloud. A Sandbox will expire in 3 days, but if you want you can extend your project for an additional 7 days (it can be done only once).
-
-Create a Neo4j Sanbox [here](https://neo4j.com/sandbox/).
-
-![A PNG file that shows the creation of a Neo4j Sandbox with Russian Twitter Trolls dataset](https://github.com/jackdbd/react-neovis-example/blob/master/screenshots/create-sandbox.png "Neo4j Sandbox with Russian Twitter Trolls dataset")
+A Neo4j Sandbox is essentially a Docker container with Neo4j installed, and a graph dataset that you can play with. There is nothing to install. It runs on the cloud. A Sandbox will expire in 3 days, but if you want you can extend your project for an additional 7 days (it can be done only once). Create a Neo4j Sanbox [here](https://neo4j.com/sandbox/).
+or
+If you have the install Neo4j desktop here and create the database and you will be having something like this
+![A PNG file that shows the creation of the database in Neo4j Desktop](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/screenshots/create-sandbox.png "Neo4j Desktop")
 
 ### 2 - Install project dependencies
 
 ```sh
-git clone git@github.com:jackdbd/react-neovis-example.git
-cd react-neovis-example
+git clone git@github.com:Fiston-pro/Web-Neo4j-Visualization.git
+cd Web-Neo4j-Visualization
 yarn install  # or simply, yarn.
 ```
 
 ### 3 - Connect to your Neo4j Sandbox
 
-Find the `Connection details` for your Neo4j Sandbox:
+Find the `Connection details` for your Neo4j Sandbox or your Neo4j Desktop application:
 
-![A PNG file that shows your Neo4j Sandbox credentials](https://github.com/jackdbd/react-neovis-example/blob/master/screenshots/sandbox-credentials.png "Neo4j Sandbox credentials")
-
-Then open the [App component](https://github.com/jackdbd/react-neovis-example/blob/master/src/components/App.js) and replace `YOUR-BOLT-URI-HERE` and `YOUR-NEO4J-PASSWORD-HERE` with your Neo4j Sanbox connection details.
+Then open the [App component](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/src/components/App.js) and replace `YOUR-BOLT-URI-HERE` and `YOUR-NEO4J-PASSWORD-HERE` with your Neo4j connection details.
 
 Now you are all set, and you can run the app with:
 
@@ -46,6 +43,4 @@ yarn start
 
 ## Credits
 
-Inspired by William Lyon's [Graph Visualization With Neo4j Using Neovis.js](https://medium.com/neo4j/graph-visualization-with-neo4j-using-neovis-js-a2ecaaa7c379).
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+Credits goes to everyone who breaths oxygen not only in the Tech community, yes including my barber too.
