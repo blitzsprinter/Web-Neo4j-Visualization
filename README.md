@@ -1,4 +1,4 @@
-# React Neovis Example
+# Web Neo4j Visualization
 
 ![A PNG file that shows an example of this project](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/screenshots/example.png "Example")
 
