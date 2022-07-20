@@ -1,7 +1,5 @@
 # React Neovis Example
 
-[![Dependencies](https://david-dm.org/jackdbd/react-neovis-example.svg)](https://david-dm.org/jackdbd/react-neovis-example)
-
 ![A PNG file that shows an example of this project](https://github.com/jackdbd/react-neovis-example/blob/master/screenshots/example.png "Example")
 
 ## What is this thing?
