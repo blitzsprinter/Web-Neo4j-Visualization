@@ -1,7 +1,6 @@
 import React from "react";
 import Filter from "./filter";
-import Nav from "./nav";
-import { NeoGraph, ResponsiveNeoGraph } from "./NeoGraph";
+import { ResponsiveNeoGraph } from "./NeoGraph";
 
 const NEO4J_URI = "bolt://localhost:7687";
 const NEO4J_USER = "neo4j";
