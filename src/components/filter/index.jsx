@@ -9,11 +9,38 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 
 export default function Filter() {
-  const [checked, setChecked] = React.useState([0]);
+  const Objects = [
+    "AWSZone",
+    "AWSRegion",
+    "Subnet",
+    "AWSVpc",
+    "SecurityGroup",
+    "AWSEC2",
+    "AWSTgw",
+    "AwsMaster",
+  ];
+  const Relationships = [
+    "geo",
+    "Peering",
+    "VpcOwner",
+    "ownTgw",
+    "PortRangeSG",
+    "InZone",
+    "InVpc",
+    "InRegion",
+    "Linked",
+    "owner",
+    "TransitGatewayAttachment",
+  ];
+  // Objects section
+  const [checkedObjects, setCheckedObjects] = React.useState([0]);
+  const [checkedSelectAllObjects, setCheckedSelectAllObjects] = React.useState(
+    false
+  );
 
-  const handleToggle = value => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  const handleToggleObjects = value => () => {
+    const currentIndex = checkedObjects.indexOf(value);
+    const newChecked = [...checkedObjects];
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -21,36 +48,90 @@ export default function Filter() {
       newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked);
+    setCheckedObjects(newChecked);
+  };
+  // Relationships section
+  const [checkedRelationships, setCheckedRelationships] = React.useState([0]);
+  const [
+    checkedSelectAllRelationships,
+    setCheckedSelectAllRelationships,
+  ] = React.useState(false);
+
+  const handleToggleRelationships = value => () => {
+    const currentIndex = checkedRelationships.indexOf(value);
+    const newChecked = [...checkedRelationships];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setCheckedRelationships(newChecked);
+  };
+  // select all section on Objects
+  const selectAllObjects = () => {
+    setCheckedSelectAllObjects(!checkedSelectAllObjects);
+    if (checkedSelectAllObjects == false) {
+      const newChecked = [];
+      Objects.map(value => {
+        newChecked.push(value);
+      });
+      setCheckedObjects(newChecked);
+    } else {
+      const newChecked = [];
+      setCheckedObjects(newChecked);
+    }
+  };
+  // select all section on Relationships
+  const selectAllRelationships = () => {
+    setCheckedSelectAllRelationships(!checkedSelectAllRelationships);
+    if (checkedSelectAllRelationships == false) {
+      const newChecked = [];
+      Relationships.map(value => {
+        newChecked.push(value);
+      });
+      setCheckedRelationships(newChecked);
+    } else {
+      const newChecked = [];
+      setCheckedRelationships(newChecked);
+    }
   };
 
   return (
     <div className="container">
       <List>
         <h4>Objects</h4>
-        {[
-          "AWSZone",
-          "AWSRegion",
-          "Subnet",
-          "AWSVpc",
-          "SecurityGroup",
-          "AWSEC2",
-          "AWSTgw",
-          "AwsMaster",
-        ].map(value => {
+        {/* Select all Objects */}
+        <ListItem key={"SelectAllObjects"} disablePadding>
+          <ListItemButton role={undefined} onClick={selectAllObjects} dense>
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                checked={checkedSelectAllObjects}
+                tabIndex={-1}
+                disableRipple
+                inputProps={{ "aria-labelledby": "SelectAllObjects" }}
+              />
+            </ListItemIcon>
+            <ListItemText id={"SelectAllObjects"} primary={`Select All`} />
+          </ListItemButton>
+        </ListItem>
+        {/* Rest of objects */}
+        {Objects.map(value => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
             <ListItem key={value} disablePadding>
               <ListItemButton
                 role={undefined}
-                onClick={handleToggle(value)}
+                onClick={handleToggleObjects(value)}
                 dense
               >
-                <ListItemIcon>
+                <ListItemIcon sx={{ paddingLeft: 2 }}>
                   <Checkbox
                     edge="start"
-                    checked={checked.indexOf(value) !== -1}
+                    checked={checkedObjects.indexOf(value) !== -1}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ "aria-labelledby": labelId }}
@@ -62,33 +143,43 @@ export default function Filter() {
           );
         })}
         <h4>Relationships</h4>
-        {[
-          "geo",
-          "Peering",
-          "VpcOwner",
-          "ownTgw",
-          "PortRangeSG",
-          "InZone",
-          "InVpc",
-          "InRegion",
-          "Linked",
-          "owner",
-          "ownTgw",
-          "TransitGatewayAttachment",
-        ].map(value => {
+        {/* Select all Relationships */}
+        <ListItem key={"SelectAllRelationships"} disablePadding>
+          <ListItemButton
+            role={undefined}
+            onClick={selectAllRelationships}
+            dense
+          >
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                checked={checkedSelectAllRelationships}
+                tabIndex={-1}
+                disableRipple
+                inputProps={{ "aria-labelledby": "SelectAllRelationships" }}
+              />
+            </ListItemIcon>
+            <ListItemText
+              id={"SelectAllRelationships"}
+              primary={`Select All`}
+            />
+          </ListItemButton>
+        </ListItem>
+        {/* Rest of Relationships */}
+        {Relationships.map(value => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
             <ListItem key={value} disablePadding>
               <ListItemButton
                 role={undefined}
-                onClick={handleToggle(value)}
+                onClick={handleToggleRelationships(value)}
                 dense
               >
-                <ListItemIcon>
+                <ListItemIcon sx={{ paddingLeft: 2 }}>
                   <Checkbox
                     edge="start"
-                    checked={checked.indexOf(value) !== -1}
+                    checked={checkedRelationships.indexOf(value) !== -1}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ "aria-labelledby": labelId }}
