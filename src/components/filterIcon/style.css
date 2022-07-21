@@ -1,0 +1,18 @@
+.iconcontainer {
+  padding: 0rem 2rem;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+}
+div a {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0.9rem;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+div a:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
