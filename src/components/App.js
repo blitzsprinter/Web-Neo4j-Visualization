@@ -1,5 +1,5 @@
 import React from "react";
-import Filter from "./filter";
+import FilterIcon from "./filterIcon";
 import { ResponsiveNeoGraph } from "./NeoGraph";
 
 const NEO4J_URI = "bolt://localhost:7687";
@@ -18,7 +18,7 @@ const App = () => {
         neo4jUser={NEO4J_USER}
         neo4jPassword={NEO4J_PASSWORD}
       />
-      <Filter />
+      <FilterIcon />
     </div>
   );
 };
