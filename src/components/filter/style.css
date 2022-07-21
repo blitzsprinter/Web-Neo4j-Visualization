@@ -8,3 +8,14 @@
   width: 180px;
   overflow-y: scroll;
 }
+
+.btnContainer {
+  position: fixed;
+  top: 3rem;
+  right: 18rem;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0.9rem;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.5rem;
+}
