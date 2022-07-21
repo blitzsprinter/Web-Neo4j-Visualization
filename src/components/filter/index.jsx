@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./style.css";
+import Btn from "./btn";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -7,7 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 
-export default function Filter() {
+export default function Filter(props) {
   const Objects = [
     "AWSZone",
     "AWSRegion",
@@ -99,6 +100,7 @@ export default function Filter() {
 
   return (
     <div className="container">
+      <Btn handleOnClick={props.handleOnClick} />
       <List>
         <h4>Objects</h4>
         {/* Select all Objects */}
