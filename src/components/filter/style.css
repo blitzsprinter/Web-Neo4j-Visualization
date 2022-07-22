@@ -19,3 +19,6 @@
   display: flex;
   font-size: 1.5rem;
 }
+.btnContainer:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
