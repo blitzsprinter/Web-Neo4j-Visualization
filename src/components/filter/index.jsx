@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./style.css";
+import { useReadCypher } from "use-neo4j";
 import Btn from "./btn";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -9,29 +10,44 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 
 export default function Filter(props) {
-  const Objects = [
-    "AWSZone",
-    "AWSRegion",
-    "Subnet",
-    "AWSVpc",
-    "SecurityGroup",
-    "AWSEC2",
-    "AWSTgw",
-    "AwsMaster",
-  ];
-  const Relationships = [
-    "geo",
-    "Peering",
-    "VpcOwner",
-    "ownTgw",
-    "PortRangeSG",
-    "InZone",
-    "InVpc",
-    "InRegion",
-    "Linked",
-    "owner",
-    "TransitGatewayAttachment",
-  ];
+  const [Objects, setObjects] = React.useState([]);
+  const [Relationships, setRelationships] = React.useState([]);
+
+  const { result } = useReadCypher(
+    `CALL db.labels() YIELD label return label, Null as relationshipType UNION CALL db.relationshipTypes() YIELD relationshipType RETURN relationshipType, Null as label`
+  );
+  // Populate objects and relationships
+  // let dataObjects = []
+  // console.log("fsdf")
+  // result && result.records.map(row => {
+  //     let temp = row.get("label")
+  //     if(temp !=null){
+  //         dataObjects.push(temp)
+  //     }
+  // })
+  // setObjects(dataObjects)
+  // let dataRelationships = []
+  // result && result.records.map(row => {
+  //     let temp = row.get("relationshipType")
+  //     if(temp !=null){
+  //         dataRelationships.push(temp)
+  //     }
+  // })
+  // setRelationships(dataRelationships)
+  //   // load relationships from the database
+  //   const loadRelationships = () => {
+  //     const { result } = useReadCypher(`CALL db.relationshipTypes`)
+  //     let data = []
+  //     result && result.records.map(row => data.push(row.get("relationshipType")))
+  //     setRelationships(data)
+  //   }
+  //   // load Objects from the database
+  //   const loadObjects = () => {
+  //     const { result } = useReadCypher(`CALL db.labels`)
+  //     let data = []
+  //     result && result.records.map(row => data.push(row.get("label")))
+  //     setObjects(data)
+  //   }
   // Objects section
   const [checkedObjects, setCheckedObjects] = React.useState([0]);
   const [checkedSelectAllObjects, setCheckedSelectAllObjects] = React.useState(
@@ -119,30 +135,34 @@ export default function Filter(props) {
           </ListItemButton>
         </ListItem>
         {/* Rest of objects */}
-        {Objects.map(value => {
-          const labelId = `checkbox-list-label-${value}`;
+        {result &&
+          result.records.map(row => {
+            let temp = row.get("relationshipType");
+            if (temp != null) {
+              const labelId = `checkbox-list-label-${temp}`;
 
-          return (
-            <ListItem key={value} disablePadding>
-              <ListItemButton
-                role={undefined}
-                onClick={handleToggleObjects(value)}
-                dense
-              >
-                <ListItemIcon sx={{ paddingLeft: 2 }}>
-                  <Checkbox
-                    edge="start"
-                    checked={checkedObjects.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ "aria-labelledby": labelId }}
-                  />
-                </ListItemIcon>
-                <ListItemText id={labelId} primary={`${value}`} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
+              return (
+                <ListItem key={temp} disablePadding>
+                  <ListItemButton
+                    role={undefined}
+                    onClick={handleToggleObjects(temp)}
+                    dense
+                  >
+                    <ListItemIcon sx={{ paddingLeft: 2 }}>
+                      <Checkbox
+                        edge="start"
+                        checked={checkedObjects.indexOf(temp) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                        inputProps={{ "aria-labelledby": labelId }}
+                      />
+                    </ListItemIcon>
+                    <ListItemText id={labelId} primary={`${temp}`} />
+                  </ListItemButton>
+                </ListItem>
+              );
+            }
+          })}
         <h4>Relationships</h4>
         {/* Select all Relationships */}
         <ListItem key={"SelectAllRelationships"} disablePadding>
@@ -167,30 +187,34 @@ export default function Filter(props) {
           </ListItemButton>
         </ListItem>
         {/* Rest of Relationships */}
-        {Relationships.map(value => {
-          const labelId = `checkbox-list-label-${value}`;
+        {result &&
+          result.records.map(row => {
+            let temp = row.get("label");
+            if (temp != null) {
+              const labelId = `checkbox-list-label-${temp}`;
 
-          return (
-            <ListItem key={value} disablePadding>
-              <ListItemButton
-                role={undefined}
-                onClick={handleToggleRelationships(value)}
-                dense
-              >
-                <ListItemIcon sx={{ paddingLeft: 2 }}>
-                  <Checkbox
-                    edge="start"
-                    checked={checkedRelationships.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ "aria-labelledby": labelId }}
-                  />
-                </ListItemIcon>
-                <ListItemText id={labelId} primary={`${value}`} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
+              return (
+                <ListItem key={temp} disablePadding>
+                  <ListItemButton
+                    role={undefined}
+                    onClick={handleToggleRelationships(temp)}
+                    dense
+                  >
+                    <ListItemIcon sx={{ paddingLeft: 2 }}>
+                      <Checkbox
+                        edge="start"
+                        checked={checkedRelationships.indexOf(temp) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                        inputProps={{ "aria-labelledby": labelId }}
+                      />
+                    </ListItemIcon>
+                    <ListItemText id={labelId} primary={`${temp}`} />
+                  </ListItemButton>
+                </ListItem>
+              );
+            }
+          })}
       </List>
     </div>
   );
