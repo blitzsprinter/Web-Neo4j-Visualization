@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useReadCypher } from "use-neo4j";
 import "./style.css";
 import useResizeAware from "react-resize-aware";
 import PropTypes from "prop-types";
@@ -14,6 +15,13 @@ const NeoGraph = props => {
     neo4jUser,
     neo4jPassword,
   } = props;
+
+  //labels and relationships variables
+  const [label, setLabel] = useState([]);
+
+  // start reading from the database
+  //   const { result } = useReadCypher(`CALL db.labels() YIELD label return label, Null as relationshipType UNION CALL db.relationshipTypes() YIELD relationshipType RETURN relationshipType, Null as label`)
+  //   const movies = result && result.records.map(row => console.log(row))
 
   const visRef = useRef();
 
