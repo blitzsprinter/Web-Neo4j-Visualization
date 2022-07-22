@@ -1,6 +1,6 @@
 # Web Neo4j Visualization
 
-![A PNG file that shows an example of this project](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/screenshots/example.png "Example")
+![A PNG file that shows an example of this project](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/images/example.png "Example")
 
 ## What is this thing?
 
@@ -19,7 +19,7 @@ You don't need to install Neo4j but its better if you do it. You just need 3 thi
 A Neo4j Sandbox is essentially a Docker container with Neo4j installed, and a graph dataset that you can play with. There is nothing to install. It runs on the cloud. A Sandbox will expire in 3 days, but if you want you can extend your project for an additional 7 days (it can be done only once). Create a Neo4j Sanbox [here](https://neo4j.com/sandbox/).
 or
 If you have the install Neo4j desktop here and create the database and you will be having something like this
-![A PNG file that shows the creation of the database in Neo4j Desktop](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/screenshots/create-sandbox.png "Neo4j Desktop")
+![A PNG file that shows the creation of the database in Neo4j Desktop](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/images/create-sandbox.png "Neo4j Desktop")
 
 ### 2 - Install project dependencies
 
