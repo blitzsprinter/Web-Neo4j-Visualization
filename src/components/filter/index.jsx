@@ -16,38 +16,7 @@ export default function Filter(props) {
   const { result } = useReadCypher(
     `CALL db.labels() YIELD label return label, Null as relationshipType UNION CALL db.relationshipTypes() YIELD relationshipType RETURN relationshipType, Null as label`
   );
-  // Populate objects and relationships
-  // let dataObjects = []
-  // console.log("fsdf")
-  // result && result.records.map(row => {
-  //     let temp = row.get("label")
-  //     if(temp !=null){
-  //         dataObjects.push(temp)
-  //     }
-  // })
-  // setObjects(dataObjects)
-  // let dataRelationships = []
-  // result && result.records.map(row => {
-  //     let temp = row.get("relationshipType")
-  //     if(temp !=null){
-  //         dataRelationships.push(temp)
-  //     }
-  // })
-  // setRelationships(dataRelationships)
-  //   // load relationships from the database
-  //   const loadRelationships = () => {
-  //     const { result } = useReadCypher(`CALL db.relationshipTypes`)
-  //     let data = []
-  //     result && result.records.map(row => data.push(row.get("relationshipType")))
-  //     setRelationships(data)
-  //   }
-  //   // load Objects from the database
-  //   const loadObjects = () => {
-  //     const { result } = useReadCypher(`CALL db.labels`)
-  //     let data = []
-  //     result && result.records.map(row => data.push(row.get("label")))
-  //     setObjects(data)
-  //   }
+
   // Objects section
   const [checkedObjects, setCheckedObjects] = React.useState([0]);
   const [checkedSelectAllObjects, setCheckedSelectAllObjects] = React.useState(
