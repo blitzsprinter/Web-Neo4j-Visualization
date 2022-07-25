@@ -59,9 +59,14 @@ export default function Filter(props) {
     setCheckedSelectAllObjects(!checkedSelectAllObjects);
     if (checkedSelectAllObjects == false) {
       const newChecked = [];
-      Objects.map(value => {
-        newChecked.push(value);
-      });
+
+      result &&
+        result.records.map(row => {
+          let temp = row.get("relationshipType");
+          if (temp != null) {
+            newChecked.push(temp);
+          }
+        });
       setCheckedObjects(newChecked);
     } else {
       const newChecked = [];
@@ -73,9 +78,14 @@ export default function Filter(props) {
     setCheckedSelectAllRelationships(!checkedSelectAllRelationships);
     if (checkedSelectAllRelationships == false) {
       const newChecked = [];
-      Relationships.map(value => {
-        newChecked.push(value);
-      });
+
+      result &&
+        result.records.map(row => {
+          let temp = row.get("label");
+          if (temp != null) {
+            newChecked.push(temp);
+          }
+        });
       setCheckedRelationships(newChecked);
     } else {
       const newChecked = [];
