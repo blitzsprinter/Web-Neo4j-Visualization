@@ -10,9 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 
 export default function Filter(props) {
-  const [Objects, setObjects] = React.useState([]);
-  const [Relationships, setRelationships] = React.useState([]);
-
   const { result } = useReadCypher(
     `CALL db.labels() YIELD label return label, Null as relationshipType UNION CALL db.relationshipTypes() YIELD relationshipType RETURN relationshipType, Null as label`
   );
