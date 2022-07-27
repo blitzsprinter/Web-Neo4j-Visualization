@@ -97,10 +97,10 @@ export default function Filter(props) {
     console.log(
       "Objects: " + checkedObjects + " Relationships: " + checkedRelationships
     );
-    props.vis.updateWithCypher(`MATCH (n)-[r]-(m)
-    WHERE ANY(l IN labels(n) WHERE l IN ['AWSVpc','Subnet'])
-          AND type(r) IN []
-    RETURN n,r,m `);
+    // props.vis.updateWithCypher(`MATCH (n)-[r]-(m)
+    // WHERE ANY(l IN labels(n) WHERE l IN ['AWSVpc','Subnet'])
+    //       AND type(r) IN []
+    // RETURN n,r,m `);
     // return () => {
     //     if (checkedObjects.length!=0 && checkedRelationships.length!=0){
     //         console.log(checkedObjects+' + '+ checkedRelationships)
