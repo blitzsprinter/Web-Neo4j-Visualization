@@ -9,13 +9,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 
+// Neovis
+import Neovis from "neovis.js/dist/neovis.js";
+
 export default function Filter(props) {
   const { result } = useReadCypher(
     `CALL db.labels() YIELD label return label, Null as relationshipType UNION CALL db.relationshipTypes() YIELD relationshipType RETURN relationshipType, Null as label`
   );
-
   // Objects section
-  const [checkedObjects, setCheckedObjects] = React.useState([0]);
+  const [checkedObjects, setCheckedObjects] = React.useState([]);
   const [checkedSelectAllObjects, setCheckedSelectAllObjects] = React.useState(
     false
   );
@@ -32,8 +34,7 @@ export default function Filter(props) {
 
     setCheckedObjects(newChecked);
   };
-  // Relationships section
-  const [checkedRelationships, setCheckedRelationships] = React.useState([0]);
+  const [checkedRelationships, setCheckedRelationships] = React.useState([]);
   const [
     checkedSelectAllRelationships,
     setCheckedSelectAllRelationships,
@@ -89,6 +90,25 @@ export default function Filter(props) {
       setCheckedRelationships(newChecked);
     }
   };
+
+  // Use Effect
+
+  React.useEffect(() => {
+    console.log(
+      "Objects: " + checkedObjects + " Relationships: " + checkedRelationships
+    );
+    props.vis.updateWithCypher(`MATCH (n)-[r]-(m)
+    WHERE ANY(l IN labels(n) WHERE l IN ['AWSVpc','Subnet'])
+          AND type(r) IN []
+    RETURN n,r,m `);
+    // return () => {
+    //     if (checkedObjects.length!=0 && checkedRelationships.length!=0){
+    //         console.log(checkedObjects+' + '+ checkedRelationships)
+    //     }
+    //     console.log(checkedObjects.length+' + '+ checkedRelationships.length)
+
+    //   }
+  }, [checkedObjects, checkedRelationships]);
 
   return (
     <div className="container">
