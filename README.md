@@ -2,7 +2,7 @@
 
 ![A PNG file that shows an example of this project](https://github.com/Fiston-pro/Web-Neo4j-Visualization/blob/master/src/images/example.png "Example")
 
-## What is this thing?
+## What is this thing
 
 This repo is just a way to visualize data in your [neo4j.com](https://neo4j.com/) database with a help of different tools including [neovis.js](https://github.com/neo4j-contrib/neovis.js/) in a React application.
 
